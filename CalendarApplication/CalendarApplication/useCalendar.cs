@@ -12,6 +12,8 @@ using DevExpress.XtraScheduler;
 using DevExpress.XtraScheduler.Drawing;
 using System.Globalization;
 using System.Threading;
+using DevExpress.XtraLayout;
+using DevExpress.XtraLayout.Utils;
 
 namespace CalendarApplication
 {
@@ -30,7 +32,12 @@ namespace CalendarApplication
 		}
 		public useCalendar()
 		{
+			
+			
 			InitializeComponent();
+			
+
+
 		}
 
 		private void scheduler_CustomDrawDayHeader(object sender, CustomDrawObjectEventArgs e)
@@ -209,6 +216,21 @@ namespace CalendarApplication
 		private void BtnMonth_Click(object sender, EventArgs e)
 		{
 			schedulerControl1.ActiveViewType = SchedulerViewType.Month;
+		}
+
+		private void SchedulerDataStorage1_AppointmentsChanged(object sender, PersistentObjectsEventArgs e)
+		{
+			appointmentsTableAdapter.Update(scheduleDataDataSet);
+			scheduleDataDataSet.AcceptChanges();
+			
+		}
+
+		// Load data lên khi form load
+		private void UseCalendar_Load(object sender, EventArgs e)
+		{
+			this.resourcesTableAdapter.Fill(this.scheduleDataDataSet.Resources);
+			this.appointmentsTableAdapter.Fill(this.scheduleDataDataSet.Appointments);
+			
 		}
 	}
 }

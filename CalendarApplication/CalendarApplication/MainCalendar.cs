@@ -22,9 +22,10 @@ namespace CalendarApplication
 		{
 			
 			// Khởi tạo tiếng anh khi load lên
-			CultureInfo culture = CultureInfo.CreateSpecificCulture("en");
+			CultureInfo culture = CultureInfo.CreateSpecificCulture("vi");
 			Thread.CurrentThread.CurrentUICulture = culture;
 			Thread.CurrentThread.CurrentCulture = culture;		
+			
 
 			// Các hàm khởi tạo các control kéo thả nằm trong đây
 			InitializeComponent();
